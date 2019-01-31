@@ -113,11 +113,11 @@ describe 'ActiveRecord Obstacle Course' do
     expected_objects = [@item_1, @item_4, @item_2]
 
     # ----------------------- Using Ruby -------------------------
-    items = Item.all.select { |item| ids_to_find.include?(item.id) }
+    # items = Item.all.select { |item| ids_to_find.include?(item.id) }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
-    # Solution goes here
+    items =  Item.where(id: ids_to_find)
     # ------------------------------------------------------------
 
     # Expectation
@@ -157,11 +157,12 @@ describe 'ActiveRecord Obstacle Course' do
     expected_result = [@order_3, @order_2, @order_1, @order_4]
 
     # ----------------------- Using Ruby -------------------------
-    orders_less_than_550 = Order.all.select { |order| order.amount < 550 }
+    # orders_less_than_550 = Order.all.select { |order| order.amount < 550 }
     # ------------------------------------------------------------
 
     # ------------------ Using ActiveRecord ----------------------
     # Solution goes here
+    orders_less_than_550 = Order.where("amount < ?", 550)
     # ------------------------------------------------------------
 
     # Expectation
